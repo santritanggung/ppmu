@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="pp.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="shape">
+      <img src="/GAMBAR/LOGO.png" alt="logoppmu" class="logo">
+  </div>
+    </div>
+    <div class="shape2">
+            <div class="icons">
+              <!-- Ganti URL gambar dengan gambar Anda sendiri -->
+              <img src="/GAMBAR/fb.png" alt="Icon 1">
+              <img src="/GAMBAR/ig.png" alt="Icon 2">
+              <img src="/GAMBAR/tiktok.png" alt="Icon 3">
+              <img src="/GAMBAR/yt.png" alt="Icon 4">
+            </div>
+    </div>
+    </script>
+    </div>
+    <div class="shape6"></div>
+    <div class="shape4">
+      <div class="icons2">
+        <!-- Ganti URL gambar dengan gambar Anda sendiri -->
+        <a href="/index.html">
+          <img src="/GAMBAR/home.png" alt="Icon 1" class="icon-button">
+        </a>
+      </div>
+    </div>
+    <div class="shape5">
+        <div class="icons3">
+          <!-- Ganti URL gambar dengan gambar Anda sendiri -->
+          <a href="/isi/pemasukan.html">
+            <img src="/GAMBAR/pemasukan.png" alt="Icon 1" class="icon-button">
+          </a>
+          <a href="/isi/pengeluaran.html">
+            <img src="/GAMBAR/pengeluaran.png" alt="Icon 2" class="icon-button">
+          </a>
+          <a href="/isi/laporan.html">
+            <img src="/GAMBAR/laporan.png" alt="Icon 3" class="icon-button">
+          </a>
+        </div>
+      </div>     
+<DIV class="TABEL">
+    <table id="dataTable" >
+        <thead>
+          <tr>
+            <th>TANGGAL</th>
+            <th>PENANGGUNGJAWAB</th>
+            <th>KASI</th>
+            <th>JUMLAH</th>
+            <th>CATATAN</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+</DIV>
+      <script>
+        const API_KEY = 'AIzaSyAlT57jkJ9WR6bmEXlBXcR1-3kKzhk8FHw';
+const SPREADSHEET_ID = '1vgsGVs4rQ4uPZvj9tm4IE43hlkzYFJnTqTdCQaarCIg';
+const RANGE = 'PENGELUARAN'; // Sesuaikan dengan nama sheet Anda
+
+function getData() {
+  fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`)
+    .then(response => response.json())
+    .then(data => {
+      const values = data.values;
+      const tableBody = document.querySelector('#dataTable tbody');
+      tableBody.innerHTML = ''; // Bersihkan tabel sebelum menambahkan data baru
+
+      values.forEach(row => {
+        const newRow = tableBody.insertRow();
+        row.forEach(cellValue => {
+          const newCell = newRow.insertCell();
+          const newText = document.createTextNode(cellValue);
+          newCell.appendChild(newText);
+        });
+      });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+// Panggil fungsi getData() setiap 5 detik (misalnya)
+setInterval(getData, 5000);
+
+// Panggil fungsi getData() saat halaman pertama dimuat
+getData();
+      </script>
+    
+
+</body>
+</html>

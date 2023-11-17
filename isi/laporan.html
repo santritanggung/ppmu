@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="laporan.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="shape">
+        <img src="/GAMBAR/LOGO.png" alt="logoppmu" class="logo">
+    </div>
+    <div class="shape2">
+      <div class="icons">
+        <!-- Ganti URL gambar dengan gambar Anda sendiri -->
+        <img src="/GAMBAR/fb.png" alt="Icon 1">
+        <img src="/GAMBAR/ig.png" alt="Icon 2">
+        <img src="/GAMBAR/tiktok.png" alt="Icon 3">
+        <img src="/GAMBAR/yt.png" alt="Icon 4">
+      </div>
+</div>
+    </script>
+    </div>
+    <div class="shape6"></div>
+    <div class="shape4">
+      <div class="icons2">
+        <!-- Ganti URL gambar dengan gambar Anda sendiri -->
+        <a href="/index.html">
+        <img src="/GAMBAR/home.png" alt="Icon 1" class="icon-button">
+      </a>
+      </div>
+    </div>
+    <div class="shape5">
+      <div class="icons3">
+        <!-- Ganti URL gambar dengan gambar Anda sendiri -->
+        <a href="/isi/pemasukan.html">
+          <img src="/GAMBAR/pemasukan.png" alt="Icon 1" class="icon-button">
+        </a>
+        <a href="/isi/pengeluaran.html">
+          <img src="/GAMBAR/pengeluaran.png" alt="Icon 2" class="icon-button">
+        </a>
+        <a href="/isi/laporan.html">
+          <img src="/GAMBAR/laporan.png" alt="Icon 3" class="icon-button">
+        </a>
+      </div>
+    </div>     
+
+    <H1>PENGELUARAN</H1>
+    <div class="isian">
+        <form name="PENGELUARAN_FORM" method="post" action="">
+            <!-- Isi formulir sesuai kebutuhan -->
+            <label for="TANGGAL">TANGGAL:</label>
+            <input type="text" id="TANGGAL" name="TANGGAL" required>
+    
+            <label for="PENANGGUNGJAWAB">PENANGGUNGJAWAB:</label>
+            <input type="text" id="PENANGGUNGJAWAB" name="PENANGGUNGJAWAB" required>
+    
+            <label for="KASI">ATAS NAMA / KASI:</label>
+            <input type="text" id="KASI" name="KASI" required>
+    
+            <label for="JUMLAH">JUMLAH:</label>
+            <input type="text" id="JUMLAH" name="JUMLAH" required>
+    
+            <label for="CATATAN">CATATAN:</label>
+            <textarea id="CATATAN" name="CATATAN" class="lebar-catatan" required></textarea>
+    
+            <!-- Tambahkan elemen formulir lainnya sesuai kebutuhan -->
+    
+            <input type="submit" value="Kirim">
+        </form>
+    </div>
+    
+    <script>
+        const pengeluaranScriptURL = 'https://script.google.com/macros/s/AKfycbxnYAk9C8Vc4uGJTsngjNTjUPSzjJsKjrInRcHg2lAHH7f98jU40H6Uo2a0LopQS5S7Kg/exec'
+        const pengeluaranForm = document.forms['PENGELUARAN_FORM']
+    
+        pengeluaranForm.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(pengeluaranScriptURL, { method: 'POST', body: new FormData(pengeluaranForm)})
+            .then(response => console.log('PENGELUARAN Success!', response))
+            .catch(error => console.error('PENGELUARAN Error!', error.message))
+        })
+    </script>
+    
+    <H1>PEMASUKAN</H1>
+    <div class="isian">
+        <form name="PEMASUKAN_FORM" method="post" action="">
+            <!-- Isi formulir sesuai kebutuhan -->
+            <label for="TANGGAL">TANGGAL:</label>
+            <input type="text" id="TANGGAL" name="TANGGAL" required>
+    
+            <label for="PEMASUKAN DARI">PEMASUKAN DARI:</label>
+            <input type="text" id="PEMASUKAN DARI" name="PEMASUKAN DARI" required>
+    
+            <label for="JUMLAH">JUMLAH:</label>
+            <input type="text" id="JUMLAH" name="JUMLAH" required>
+    
+            <label for="CATATAN">CATATAN:</label>
+            <textarea id="CATATAN" name="CATATAN" class="lebar-catatan" required></textarea>
+    
+            <!-- Tambahkan elemen formulir lainnya sesuai kebutuhan -->
+    
+            <input type="submit" value="Kirim">
+        </form>
+    
+        <script>
+            const pemasukanScriptURL = 'https://script.google.com/macros/s/AKfycbxQP4bpmqNlXcKwGQ3Fv3djo2gbr7-EGkaiabBS1PM7QUmjXrRuZZ5xtW4ISiJHrlyZ/exec'
+            const pemasukanForm = document.forms['PEMASUKAN_FORM']
+    
+            pemasukanForm.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(pemasukanScriptURL, { method: 'POST', body: new FormData(pemasukanForm)})
+                .then(response => console.log('PEMASUKAN Success!', response))
+                .catch(error => console.error('PEMASUKAN Error!', error.message))
+            })
+        </script>
+    </div>
+    
+
+</body>
+</html>
